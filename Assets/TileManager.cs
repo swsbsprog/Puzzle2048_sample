@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -32,14 +32,17 @@ public class TileManager : MonoBehaviour
         int startValue = 2;
 
 		var newTile = Instantiate(tile);
-		newTile.Move(x, y, false);
+		newTile.Move(x, y, MoveBox.AnimationType.Scale);
 		newTile.SetNumber(startValue);
     }
 
 	public int maxMove = 4;
+	public static bool isMoving = false;
 	public void Move(Direction dir)
     {
-        print("Move: " + dir);
+        print($"Move:{dir}, isMoving:{isMoving}");
+		if (isMoving)
+			return;
 		Vector2Int vector = Vector2Int.zero;
 		int[] xArray = { 0, 1, 2, 3 };
 		int[] yArray = { 0, 1, 2, 3 };
@@ -78,7 +81,7 @@ public class TileManager : MonoBehaviour
 
 					int nextX = nextPos.x; int nextY = nextPos.y;
 
-					// ÀÌµ¿ ¹æÇâÀÇ ºí·°°ú °ªÀÌ °°À»¶§
+					// ì´ë™ ë°©í–¥ì˜ ë¸”ëŸ­ê³¼ ê°’ì´ ê°™ì„ë•Œ
 					if (IsInArea(nextPos) && grid[nextX, nextY].number == grid[x, y].number)
 					{
 						grid[x, y].SetNumber(grid[x, y].number * 2);
@@ -88,7 +91,7 @@ public class TileManager : MonoBehaviour
                     }
 					else
 					{
-						// °ªÀÌ ´Ù¸¦¶§ 
+						// ê°’ì´ ë‹¤ë¥¼ë•Œ 
 						if (x != previousPos.x || y != previousPos.y)
 						{
 							grid[x, y].Move(previousPos.x, previousPos.y);
@@ -100,7 +103,7 @@ public class TileManager : MonoBehaviour
 		}
 
 		if(moved)
-			Spawn();
+			Invoke("Spawn", 0.3f);
 	}
 
 	bool IsInArea(Vector2 coord)

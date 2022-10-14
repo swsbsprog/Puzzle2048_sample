@@ -1,4 +1,4 @@
-using Lean.Touch;
+﻿using Lean.Touch;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,5 +23,12 @@ public class DragManager : MonoBehaviour
             return move.x > 0 ? Direction.Right : Direction.Left;   
         else
             return move.y > 0 ? Direction.Up : Direction.Down;
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.W)) onMove?.Invoke(Direction.Up);
+        if (Input.GetKeyDown(KeyCode.A)) onMove?.Invoke(Direction.Left);
+        if (Input.GetKeyDown(KeyCode.S)) onMove?.Invoke(Direction.Down);
+        if (Input.GetKeyDown(KeyCode.D)) onMove?.Invoke(Direction.Right);
     }
 }
