@@ -13,12 +13,29 @@ public class MoveBox : MonoBehaviour
     public Gradient gradient;
     public const int MaxMergeCount = 5;
     int mergeCount = 0;
-    
+    public enum BlockType { Color, Sprite}
+    public BlockType blockType = BlockType.Color;
+    public Sprite[] sprites;
+
+    public void Awake()
+    {
+        text.gameObject.SetActive(blockType == BlockType.Color);
+    }
+
     internal void SetNumber(int startValue)
     {
         number = startValue;
-        text.text = number.ToString();
-        spriteRenderer.color = gradient.Evaluate((float)mergeCount / MaxMergeCount);
+        switch (blockType)
+        {
+            case BlockType.Color:
+                text.text = number.ToString();
+                spriteRenderer.color = gradient.Evaluate((float)mergeCount / MaxMergeCount);
+                break;
+            case BlockType.Sprite:
+                spriteRenderer.sprite = sprites[mergeCount];
+                break;
+        }
+
         if (mergeCount == MaxMergeCount)
         {
             Debug.LogWarning("게임 클리어");

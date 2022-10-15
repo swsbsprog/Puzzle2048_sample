@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7646817292520783021}
   - component: {fileID: 2402456583795297327}
   - component: {fileID: 6662837747714186774}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Number
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 5645049792537984874}
   - component: {fileID: 7327905411686386260}
   - component: {fileID: 1339442209}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,3 +228,11 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
+  blockType: 1
+  sprites:
+  - {fileID: 21300000, guid: f11f458437cb70a44a45025b6b786279, type: 3}
+  - {fileID: 21300000, guid: e1b9ff26af97f0e46926e17e3b66432d, type: 3}
+  - {fileID: 21300000, guid: 6a1fbec20bc41c941acd40b20cfda259, type: 3}
+  - {fileID: 21300000, guid: 80078ec65489cf64cb574e5cdb46ccd0, type: 3}
+  - {fileID: 21300000, guid: 0460c8c29c144244683d39d0667fbd39, type: 3}
+  - {fileID: 21300000, guid: 0cd1b8a5ed64e104d9511b63143a1e13, type: 3}
