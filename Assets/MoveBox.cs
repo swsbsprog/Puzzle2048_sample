@@ -62,12 +62,14 @@ public class MoveBox : MonoBehaviour
             case AnimationType.Scale:
                 transform.position = movePosition;
                 transform.localScale = Vector3.one * 0.8f;
-                transform.DOScale(1, 0.3f);
+                transform.DOScale(1, 0.3f)
+                    .SetLink(gameObject);
                 TileManager.isMoving = false;
                 break;
             case AnimationType.Move:
                 transform.DOMove(movePosition, 0.3f)
-                    .OnComplete(() => TileManager.isMoving = false);
+                    .OnComplete(() => TileManager.isMoving = false)
+                    .SetLink(gameObject);
                 break;
         }
     }

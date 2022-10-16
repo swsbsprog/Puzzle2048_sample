@@ -40,7 +40,7 @@ public class TileManager : MonoBehaviour
 	public static bool isMoving = false;
 	public void Move(Direction dir)
     {
-        print($"Move:{dir}, isMoving:{isMoving}");
+        //print($"Move:{dir}, isMoving:{isMoving}");
 		if (isMoving)
 			return;
 		Vector2Int vector = Vector2Int.zero;

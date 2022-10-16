@@ -12,8 +12,9 @@ public class DragManager : MonoBehaviour
 
     public void OnSwipe(Vector2 swipe)
     {
+        float angle = Vector3.Angle(swipe, Vector3.up);
         Direction dir = GetDirection(swipe);
-        print($"{dir}, {swipe.x}, {swipe.y}");
+        print($"{dir}, {swipe.x}, {swipe.y}, angle:{angle}");
         onMove?.Invoke(dir);
     }
 
